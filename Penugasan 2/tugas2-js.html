@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penugasan 2 JavaScript - FWD</title>
+</head>
+<body>
+    <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>Tunjangan BPJS</th>
+                <th>Tunjangan Keluarga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                let nama = "Budi Susanto";
+                let umur = 25;
+                let jabatan = "Manajer";
+                let status = "Menikah";
+                let gapok = 0;
+
+                // If untuk gaji pokok
+                if(jabatan == "Manajer") {
+                    gapok = 15000000;
+                } else if(jabatan == "Asisten Manajer") {
+                    gapok = 10000000;
+                } else if (jabatan == "Staff") {
+                    gapok = 5000000;
+                }
+
+                // Persentase
+                let tunjJabatan = 0.15 * gapok;
+                let bpjs = 0.1 * gapok;
+
+                // Ternary
+                tunjKeluarga = (status == "Menikah") ? 0.2 * gapok : 0;
+
+                // Total
+                let total = gapok + tunjJabatan + tunjKeluarga + bpjs;
+
+                // Render isi tabel
+                document.write(`
+                <tr>
+                    <td>${nama}</td>
+                    <td>${umur}</td>
+                    <td>${jabatan}</td>
+                    <td>${status}</td>
+                    <td>Rp.${gapok.toLocaleString()}</td>
+                    <td>Rp.${tunjJabatan.toLocaleString()}</td>
+                    <td>Rp.${bpjs.toLocaleString()}</td>
+                    <td>Rp.${tunjKeluarga.toLocaleString()}</td>
+                </tr>
+                `);
+            </script>
+        </tbody>
+        <tfoot>
+            <tr style="font-weight: bold;">
+                <td>Total Keseluruhan:</td>
+                <td colspan="7" style="text-align: right;">
+                    <script>
+                        document.write("Rp." + total.toLocaleString());
+                    </script>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
